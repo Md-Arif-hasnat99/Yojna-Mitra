@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import AdminLoginPage from '@/pages/AdminLoginPage'
+import AdminLoginPage from '@/views/AdminLoginPage'
 
 export const metadata: Metadata = {
   title: 'Admin Sign In',

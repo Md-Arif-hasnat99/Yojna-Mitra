@@ -138,7 +138,7 @@ export default function LoginForm({ isAdmin = false }) {
         {!isAdmin && (
           <p className="mt-8 text-center text-neutral-600">
             {t('dontHaveAccount', language)}{' '}
-            <Link to="/signup" className="text-primary-600 font-bold hover:text-primary-700 hover:underline transition-colors">
+            <Link href="/signup" className="text-primary-600 font-bold hover:text-primary-700 hover:underline transition-colors">
               {t('signUpHere', language)}
             </Link>
           </p>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import LandingPage from '@/pages/LandingPage'
+import LandingPage from '@/views/LandingPage'
 
 export const metadata: Metadata = {
   title: 'Yojna Mitra — Find Government Schemes You Qualify For',

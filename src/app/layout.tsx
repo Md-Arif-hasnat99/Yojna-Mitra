@@ -1,26 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter, Noto_Sans_Devanagari } from 'next/font/google'
 import { cookies } from 'next/headers'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { LanguageProvider, type Language } from '@/contexts/LanguageContext'
 import './globals.css'
 
 // ── Fonts ─────────────────────────────────────────────────────────────────────
-// Loaded by next/font for optimal performance (no external network request at runtime)
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-  weight: ['300', '400', '500', '600', '700'],
-})
-
-const notoDevanagari = Noto_Sans_Devanagari({
-  subsets: ['devanagari'],
-  variable: '--font-noto-devanagari',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-})
+// Switched from next/font to runtime links to bypass build-time network timeouts.
+// Variable tokens defined manually here to match previous config.
+const fontVariables = '--font-inter: "Inter", sans-serif; --font-noto-devanagari: "Noto Sans Devanagari", sans-serif;'
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -57,10 +44,17 @@ export default async function RootLayout({
   return (
     <html
       lang={initialLang === 'hi' ? 'hi' : 'en'}
-      className={`${inter.variable} ${notoDevanagari.variable}`}
       suppressHydrationWarning
     >
-      <head />
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <style dangerouslySetInnerHTML={{ __html: `:root { ${fontVariables} }` }} />
+      </head>
       <body>
         {/* Skip-to-content for keyboard users */}
         <a href="#main-content" className="skip-link">

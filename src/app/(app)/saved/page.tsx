@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import SavedSchemesPage from '@/pages/SavedSchemesPage'
+import SavedSchemesPage from '@/views/SavedSchemesPage'
 
 export const metadata: Metadata = {
   title: 'Saved Schemes',

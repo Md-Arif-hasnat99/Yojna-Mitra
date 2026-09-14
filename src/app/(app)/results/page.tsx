@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import ResultsPage from '@/pages/ResultsPage'
+import ResultsPage from '@/views/ResultsPage'
 
 export const metadata: Metadata = {
   title: 'Your Results',

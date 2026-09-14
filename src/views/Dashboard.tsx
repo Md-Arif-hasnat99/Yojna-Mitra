@@ -117,7 +117,7 @@ export default function Dashboard() {
               <p className="font-bold text-lg">{language === 'hi' ? 'डेमो मोड' : 'Demo Mode - Sample Data'}</p>
               <p className="text-sm mt-1">
                 {language === 'hi' ? 'वास्तविक योजनाएं देखने के लिए प्रोफ़ाइल पूरी करें।' : 'Complete your profile to see real schemes matched to your eligibility.'}
-                <Link to="/complete-profile" className="ml-2 font-bold text-sky-700 hover:underline">
+                <Link href="/complete-profile" className="ml-2 font-bold text-sky-700 hover:underline">
                   {language === 'hi' ? 'प्रोफ़ाइल पूरी करें →' : 'Complete Profile →'}
                 </Link>
               </p>
@@ -210,7 +210,7 @@ export default function Dashboard() {
                 ? 'अपनी पात्रता जांचें और नई योजनाएं खोजें'
                 : 'Check your eligibility and discover new schemes'}
             </p>
-            <Link to="/check-eligibility">
+            <Link href="/check-eligibility">
               <Button variant="primary">{t('getStarted', language)}</Button>
             </Link>
           </Card>
@@ -227,7 +227,7 @@ export default function Dashboard() {
                 ? 'अपनी सहेजी गई योजनाओं को देखें और ट्रैक करें'
                 : 'View and track your saved schemes'}
             </p>
-            <Link to="/saved-schemes">
+            <Link href="/saved-schemes">
               <Button variant="outline">{t('viewDetails', language)}</Button>
             </Link>
           </Card>
@@ -238,7 +238,7 @@ export default function Dashboard() {
           <div>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold text-neutral-900">{t('yourSavedSchemes', language)}</h2>
-              <Link to="/saved-schemes" className="text-primary-600 font-semibold hover:text-primary-700 transition-colors flex items-center gap-1">
+              <Link href="/saved-schemes" className="text-primary-600 font-semibold hover:text-primary-700 transition-colors flex items-center gap-1">
                 {language === 'hi' ? 'सभी देखें' : 'View All'} →
               </Link>
             </div>
@@ -265,7 +265,7 @@ export default function Dashboard() {
             </div>
             <h3 className="text-2xl font-bold text-neutral-700 mb-3">{t('noSavedSchemes', language)}</h3>
             <p className="text-neutral-500 mb-6 max-w-sm mx-auto">{t('startExploring', language)}</p>
-            <Link to="/check-eligibility">
+            <Link href="/check-eligibility">
               <Button variant="primary" size="lg">{t('checkEligibility', language)}</Button>
             </Link>
           </Card>

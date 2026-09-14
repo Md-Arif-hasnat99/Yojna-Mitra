@@ -1,89 +1,112 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/views/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  // Replace ALL default Tailwind colors with our custom civic palette.
+  // No defaults inherited — strict design-system enforcement.
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      white: '#ffffff',
+      black: '#000000',
+
+      // ── Single flat accent: Deep Civic Green ─────────────────────────────
+      accent: {
+        DEFAULT: '#1A5632',
+        light:   '#236B3E',
+        muted:   '#E8F0EB',
+        subtle:  '#C8DBCE',
+        fg:      '#FFFFFF',
+      },
+
+      // ── Neutral gray scale ────────────────────────────────────────────────
+      neutral: {
+        0:   '#FFFFFF',
+        50:  '#F7F7F7',
+        100: '#EFEFEF',
+        200: '#E0E0E0',
+        300: '#CACACA',
+        400: '#ADADAD',
+        500: '#888888',
+        600: '#636363',
+        700: '#434343',
+        800: '#282828',
+        900: '#141414',
+        950: '#0A0A0A',
+      },
+
+      // ── Semantic / status colors — flat, no gradients ─────────────────────
+      success: {
+        DEFAULT: '#1B6B3A',
+        light:   '#E6F4EC',
+        border:  '#A3D3B4',
+      },
+      warning: {
+        DEFAULT: '#7A4E0D',
+        light:   '#FDF4E3',
+        border:  '#E8C27A',
+      },
+      error: {
+        DEFAULT: '#8B1A1A',
+        light:   '#FAE8E8',
+        border:  '#D99090',
+      },
+      info: {
+        DEFAULT: '#1A3A5C',
+        light:   '#E6EEF7',
+        border:  '#95B4D6',
+      },
+    },
+
+    // ── Font stacks ───────────────────────────────────────────────────────
+    fontFamily: {
+      sans:  ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      hindi: ['var(--font-noto-devanagari)', 'sans-serif'],
+    },
+
+    // ── Type scale ────────────────────────────────────────────────────────
+    fontSize: {
+      xs:    ['0.75rem',  { lineHeight: '1.125rem' }],
+      sm:    ['0.875rem', { lineHeight: '1.375rem' }],
+      base:  ['1rem',     { lineHeight: '1.625rem' }],
+      lg:    ['1.125rem', { lineHeight: '1.75rem'  }],
+      xl:    ['1.25rem',  { lineHeight: '1.875rem' }],
+      '2xl': ['1.5rem',   { lineHeight: '2rem'     }],
+      '3xl': ['1.875rem', { lineHeight: '2.375rem' }],
+      '4xl': ['2.25rem',  { lineHeight: '2.75rem'  }],
+      '5xl': ['3rem',     { lineHeight: '1.15'     }],
+      '6xl': ['3.75rem',  { lineHeight: '1.1'      }],
+    },
+
     extend: {
-      colors: {
-        primary: {
-          50: '#ecfeff',
-          100: '#cffafe',
-          200: '#a5f3fc',
-          300: '#67e8f9',
-          400: '#22d3ee',
-          500: '#06b6d4',
-          600: '#0891b2',
-          700: '#0e7490',
-          800: '#155e75',
-          900: '#164e63',
-          950: '#083344',
-        },
-        secondary: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
-        },
-        accent: {
-          emerald: '#10b981',
-          sky: '#0ea5e9',
-          amber: '#f59e0b',
-          rose: '#f43f5e',
-        },
-        neutral: {
-          50: '#fafafa',
-          100: '#f5f5f5',
-          200: '#e5e5e5',
-          300: '#d4d4d4',
-          400: '#a3a3a3',
-          500: '#737373',
-          600: '#525252',
-          700: '#404040',
-          800: '#262626',
-          900: '#171717',
-        }
+      minHeight: { touch: '44px' },
+      minWidth:  { touch: '44px' },
+
+      borderRadius: {
+        none:    '0',
+        sm:      '2px',
+        DEFAULT: '4px',
+        md:      '6px',
+        lg:      '8px',
+        xl:      '12px',
+        full:    '9999px',
       },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        hindi: ['Noto Sans Devanagari', 'sans-serif'],
-      },
+
       boxShadow: {
-        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
-        'medium': '0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 12px 25px -5px rgba(0, 0, 0, 0.06)',
-        'large': '0 10px 40px -5px rgba(0, 0, 0, 0.1), 0 20px 50px -10px rgba(0, 0, 0, 0.08)',
+        sm:      '0 1px 2px 0 rgba(0,0,0,0.07)',
+        DEFAULT: '0 1px 4px 0 rgba(0,0,0,0.10)',
+        md:      '0 2px 8px 0 rgba(0,0,0,0.10)',
+        lg:      '0 4px 16px 0 rgba(0,0,0,0.10)',
+        inner:   'inset 0 1px 2px 0 rgba(0,0,0,0.08)',
+        none:    'none',
       },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'slide-down': 'slideDown 0.5s ease-out',
-        'scale-in': 'scaleIn 0.3s ease-out',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        slideDown: {
-          '0%': { transform: 'translateY(-20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        scaleIn: {
-          '0%': { transform: 'scale(0.95)', opacity: '0' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-      },
+
+      ringColor:       { DEFAULT: '#1A5632' },
+      ringOffsetWidth: { DEFAULT: '2px' },
     },
   },
   plugins: [],

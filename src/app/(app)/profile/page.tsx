@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import CompleteProfilePage from '@/pages/CompleteProfilePage'
+import CompleteProfilePage from '@/views/CompleteProfilePage'
 
 export const metadata: Metadata = {
   title: 'Complete Profile',

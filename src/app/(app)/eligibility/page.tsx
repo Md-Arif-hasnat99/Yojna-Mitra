@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import CheckEligibilityPage from '@/pages/CheckEligibilityPage'
+import CheckEligibilityPage from '@/views/CheckEligibilityPage'
 
 export const metadata: Metadata = {
   title: 'Check Eligibility',

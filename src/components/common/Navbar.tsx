@@ -24,7 +24,7 @@ export default function Navbar() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-18 py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-11 h-11 bg-gradient-to-br from-primary-600 to-primary-500 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-200 group-hover:scale-105">
               <span className="text-white font-bold text-xl">य</span>
               <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -200,7 +200,7 @@ export default function SignupForm() {
 
         <p className="mt-8 text-center text-neutral-600">
           {t('alreadyHaveAccount', language)}{' '}
-          <Link to="/login" className="text-primary-600 font-bold hover:text-primary-700 hover:underline transition-colors">
+          <Link href="/login" className="text-primary-600 font-bold hover:text-primary-700 hover:underline transition-colors">
             {t('signInHere', language)}
           </Link>
         </p>

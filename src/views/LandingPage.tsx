@@ -28,7 +28,7 @@ export default function LandingPage() {
               {t('heroSubtitle', language)}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/signup">
+              <Link href="/signup">
                 <Button size="lg" variant="secondary" className="shadow-large">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -196,7 +196,7 @@ export default function LandingPage() {
               ? 'अपने लिए सरकारी योजनाएं खोजें और लाभ उठाएं'
               : 'Discover government schemes and benefits tailored for you'}
           </p>
-          <Link to="/signup">
+          <Link href="/signup">
             <Button size="lg" variant="secondary" className="shadow-large">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

@@ -9,7 +9,7 @@
  */
 
 /* ── Google Fonts ─────────────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..500&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+/* Fonts are now loaded via <link> tags in layout.tsx to prevent build timeouts */
 
 @tailwind base;
 @tailwind components;
@@ -157,11 +157,12 @@
            text-neutral-900 placeholder:text-neutral-400
            focus-visible:outline-none
            transition-colors duration-150;
-    /* Focus ring */
-    &:focus-visible {
-      box-shadow: var(--focus-ring);
-      border-color: var(--color-accent);
-    }
+  }
+  
+  /* Focus ring */
+  .input-field:focus-visible {
+    box-shadow: var(--focus-ring);
+    border-color: var(--color-accent);
   }
 
   .input-label {
