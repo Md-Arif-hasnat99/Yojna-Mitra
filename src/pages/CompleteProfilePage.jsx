@@ -1,5 +1,7 @@
+'use client'
+
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { useAuth } from '../contexts/AuthContext'
 import { useLanguage } from '../contexts/LanguageContext'
 import { t } from '../utils/translations'
@@ -11,7 +13,7 @@ import Button from '../components/common/Button'
 export default function CompleteProfilePage() {
   const { profile, updateProfile } = useAuth()
   const { language } = useLanguage()
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const [formData, setFormData] = useState({
     phone_number: profile?.phone_number || '',
@@ -98,7 +100,7 @@ export default function CompleteProfilePage() {
       }
 
       // Success - navigate to dashboard
-      navigate('/dashboard')
+      router.push('/dashboard')
     } catch (err) {
       console.error('Unexpected error:', err)
       alert('An unexpected error occurred. Please try again.')

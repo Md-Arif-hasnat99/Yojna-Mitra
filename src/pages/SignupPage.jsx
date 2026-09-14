@@ -1,3 +1,5 @@
+'use client'
+
 import SignupForm from '../components/auth/SignupForm'
 
 export default function SignupPage() {
@@ -7,3 +9,4 @@ export default function SignupPage() {
     </div>
   )
 }
+

@@ -1,5 +1,8 @@
+'use client'
+
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useAuth } from '../../contexts/AuthContext'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { t } from '../../utils/translations'
@@ -16,7 +19,7 @@ export default function LoginForm({ isAdmin = false }) {
   
   const { signIn, signOut } = useAuth()
   const { language } = useLanguage()
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -46,9 +49,9 @@ export default function LoginForm({ isAdmin = false }) {
         setLoading(false)
         return
       }
-      navigate('/admin')
+      router.push('/admin')
     } else {
-      navigate('/dashboard')
+      router.push('/dashboard')
     }
 
     setLoading(false)

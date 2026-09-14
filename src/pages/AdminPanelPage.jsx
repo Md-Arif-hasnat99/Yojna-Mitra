@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { t } from '../utils/translations'
@@ -522,3 +524,4 @@ export default function AdminPanelPage() {
     </div>
   )
 }
+

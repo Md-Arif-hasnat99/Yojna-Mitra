@@ -1,5 +1,7 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { useAuth } from '../contexts/AuthContext'
 import { useLanguage } from '../contexts/LanguageContext'
 import { t } from '../utils/translations'
@@ -10,7 +12,7 @@ import Button from '../components/common/Button'
 export default function CheckEligibilityPage() {
   const { profile, updateProfile } = useAuth()
   const { language } = useLanguage()
-  const navigate = useNavigate()
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export default function CheckEligibilityPage() {
 
   const handleCheckEligibility = async () => {
     if (!profile || !profile.age || !profile.state || !profile.category) {
-      navigate('/complete-profile')
+      router.push('/profile')
       return
     }
 
@@ -56,8 +58,12 @@ export default function CheckEligibilityPage() {
       matched_schemes_count: eligibleSchemes.length
     })
 
-    // Navigate to results with the matched schemes
-    navigate('/results', { state: { eligibleSchemes } })
+    // Store eligible schemes in sessionStorage so ResultsPage can read them
+    // (Next.js App Router doesn't support react-router-dom location.state)
+    sessionStorage.setItem('ym_eligible_schemes', JSON.stringify(eligibleSchemes))
+
+    // Navigate to results
+    router.push('/results')
   }
 
   return (
@@ -134,7 +140,7 @@ export default function CheckEligibilityPage() {
             {profile && profile.age && (
               <Button
                 variant="outline"
-                onClick={() => navigate('/complete-profile')}
+                onClick={() => router.push('/profile')}
                 size="lg"
               >
                 {language === 'hi' ? 'प्रोफ़ाइल संपादित करें' : 'Edit Profile'}

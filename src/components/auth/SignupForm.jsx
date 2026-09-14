@@ -1,5 +1,8 @@
+'use client'
+
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useAuth } from '../../contexts/AuthContext'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { t } from '../../utils/translations'
@@ -19,7 +22,7 @@ export default function SignupForm() {
   
   const { signUp } = useAuth()
   const { language } = useLanguage()
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -81,7 +84,7 @@ export default function SignupForm() {
     }
 
     // Redirect to profile completion
-    navigate('/complete-profile')
+    router.push('/profile')
     setLoading(false)
   }
 

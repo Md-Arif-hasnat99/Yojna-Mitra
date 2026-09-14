@@ -1,0 +1,15 @@
+{
+  "/AdminLoginPage": "pages/AdminLoginPage.js",
+  "/AdminPanelPage": "pages/AdminPanelPage.js",
+  "/CheckEligibilityPage": "pages/CheckEligibilityPage.js",
+  "/CompleteProfilePage": "pages/CompleteProfilePage.js",
+  "/Dashboard": "pages/Dashboard.js",
+  "/LandingPage": "pages/LandingPage.js",
+  "/LoginPage": "pages/LoginPage.js",
+  "/ResultsPage": "pages/ResultsPage.js",
+  "/SavedSchemesPage": "pages/SavedSchemesPage.js",
+  "/SignupPage": "pages/SignupPage.js",
+  "/_error": "pages/_error.js",
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js"
+}

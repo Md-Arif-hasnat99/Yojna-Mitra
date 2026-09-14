@@ -1,5 +1,7 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { t } from '../utils/translations'
 import { filterSchemes, searchSchemes } from '../lib/matchingAlgorithm'
@@ -10,8 +12,8 @@ import Select from '../components/common/Select'
 import Input from '../components/common/Input'
 
 export default function ResultsPage() {
-  const location = useLocation()
-  const navigate = useNavigate()
+  
+  const router = useRouter()
   const { language } = useLanguage()
   
   const [allSchemes, setAllSchemes] = useState([])
@@ -26,14 +28,18 @@ export default function ResultsPage() {
   const [showFilters, setShowFilters] = useState(false)
 
   useEffect(() => {
-    const schemes = location.state?.eligibleSchemes || []
+    // Results are stored in sessionStorage by CheckEligibilityPage before navigating here
+    const raw = typeof window !== 'undefined'
+      ? sessionStorage.getItem('ym_eligible_schemes')
+      : null
+    const schemes = raw ? JSON.parse(raw) : []
     if (schemes.length === 0) {
-      navigate('/check-eligibility')
+      router.push('/eligibility')
       return
     }
     setAllSchemes(schemes)
     setFilteredSchemes(schemes)
-  }, [location.state])
+  }, [])
 
   useEffect(() => {
     applyFiltersAndSearch()
@@ -198,7 +204,7 @@ export default function ResultsPage() {
 
         {/* Back to Dashboard */}
         <div className="mt-8 text-center">
-          <Button variant="outline" onClick={() => navigate('/dashboard')}>
+          <Button variant="outline" onClick={() => router.push('/dashboard')}>
             ← {language === 'hi' ? 'डैशबोर्ड पर वापस जाएं' : 'Back to Dashboard'}
           </Button>
         </div>

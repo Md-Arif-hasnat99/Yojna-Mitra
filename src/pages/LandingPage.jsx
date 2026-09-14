@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 import { useLanguage } from '../contexts/LanguageContext'
 import { t } from '../utils/translations'
 import Button from '../components/common/Button'
@@ -10,21 +12,16 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-700 via-primary-600 to-primary-500 text-white py-24 md:py-32 overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-secondary-400 rounded-full blur-3xl"></div>
-        </div>
+      <section className="bg-accent text-white py-24 md:py-32">
         
-        <div className="container-custom relative z-10">
+        <div className="container-app">
           <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8 text-sm font-medium">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+            <div className="inline-flex items-center gap-2 border border-white/30 px-4 py-2 rounded mb-8 text-sm font-medium">
+              <span className="w-2 h-2 bg-white rounded-full" aria-hidden="true"></span>
               {language === 'hi' ? 'भारत का #1 योजना खोज मंच' : 'India\'s #1 Scheme Discovery Platform'}
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-shadow-lg animate-fade-in">
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
               {t('heroTitle', language)}
             </h1>
             <p className="text-xl md:text-2xl mb-10 opacity-95 leading-relaxed max-w-3xl mx-auto">
@@ -56,22 +53,16 @@ export default function LandingPage() {
       <section className="py-20 bg-white relative">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-100 to-primary-50 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
-                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-500">50+</div>
-              </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-accent mb-2">50+</div>
               <div className="text-neutral-600 text-lg font-semibold">{t('statsSchemes', language)}</div>
             </div>
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
-                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-500">5K+</div>
-              </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-accent mb-2">5K+</div>
               <div className="text-neutral-600 text-lg font-semibold">{t('statsUsers', language)}</div>
             </div>
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-secondary-100 to-secondary-50 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
-                <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-secondary-600 to-secondary-500">₹10Cr+</div>
-              </div>
+            <div className="text-center">
+              <div className="text-5xl font-black text-accent mb-2">₹10Cr+</div>
               <div className="text-neutral-600 text-lg font-semibold">{t('statsBenefit', language)}</div>
             </div>
           </div>
@@ -79,10 +70,10 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-24 bg-gradient-to-b from-neutral-50 to-white">
-        <div className="container-custom">
+      <section id="how-it-works" className="py-24 bg-neutral-50">
+        <div className="container-app">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 mb-4">
               {t('howItWorks', language)}
             </h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
@@ -94,7 +85,7 @@ export default function LandingPage() {
             {/* Step 1 */}
             <div className="relative">
               <Card variant="hover" className="text-center h-full">
-                <div className="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-600 to-primary-500 rounded-2xl shadow-large mx-auto mb-6">
+                <div className="relative inline-flex items-center justify-center w-20 h-20 bg-accent rounded-xl mx-auto mb-6">
                   <span className="text-white text-3xl font-black">1</span>
                   <div className="absolute -top-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -106,13 +97,13 @@ export default function LandingPage() {
                 <p className="text-neutral-600 leading-relaxed">{t('step1Desc', language)}</p>
               </Card>
               {/* Connector Line */}
-              <div className="hidden md:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary-300 to-transparent -translate-x-1/2"></div>
+              <div className="hidden md:block absolute top-10 left-full w-full h-px bg-neutral-200 -translate-x-1/2" aria-hidden="true"></div>
             </div>
 
             {/* Step 2 */}
             <div className="relative">
               <Card variant="hover" className="text-center h-full">
-                <div className="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-600 to-primary-500 rounded-2xl shadow-large mx-auto mb-6">
+                <div className="relative inline-flex items-center justify-center w-20 h-20 bg-accent rounded-xl mx-auto mb-6">
                   <span className="text-white text-3xl font-black">2</span>
                   <div className="absolute -top-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
                     <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -124,12 +115,12 @@ export default function LandingPage() {
                 <p className="text-neutral-600 leading-relaxed">{t('step2Desc', language)}</p>
               </Card>
               {/* Connector Line */}
-              <div className="hidden md:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary-300 to-transparent -translate-x-1/2"></div>
+              <div className="hidden md:block absolute top-10 left-full w-full h-px bg-neutral-200 -translate-x-1/2" aria-hidden="true"></div>
             </div>
 
             {/* Step 3 */}
             <Card variant="hover" className="text-center h-full">
-              <div className="relative inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-600 to-primary-500 rounded-2xl shadow-large mx-auto mb-6">
+              <div className="relative inline-flex items-center justify-center w-20 h-20 bg-accent rounded-xl mx-auto mb-6">
                 <span className="text-white text-3xl font-black">3</span>
                 <div className="absolute -top-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -146,9 +137,9 @@ export default function LandingPage() {
 
       {/* Features Section */}
       <section className="py-24 bg-white">
-        <div className="container-custom">
+        <div className="container-app">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold gradient-text mb-4">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 mb-4">
               {t('featuresTitle', language)}
             </h2>
             <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
@@ -159,7 +150,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Feature 1 */}
             <Card variant="hover" className="group">
-              <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md">
+              <div className="w-14 h-14 bg-accent rounded flex items-center justify-center mb-5">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -170,7 +161,7 @@ export default function LandingPage() {
 
             {/* Feature 2 */}
             <Card variant="hover" className="group">
-              <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md">
+              <div className="w-14 h-14 bg-accent rounded flex items-center justify-center mb-5">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                 </svg>
@@ -181,7 +172,7 @@ export default function LandingPage() {
 
             {/* Feature 3 */}
             <Card variant="hover" className="group">
-              <div className="w-14 h-14 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md">
+              <div className="w-14 h-14 bg-accent rounded flex items-center justify-center mb-5">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
@@ -194,14 +185,10 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-500 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-400 rounded-full blur-3xl"></div>
-        </div>
+      <section className="py-24 bg-accent text-white">
         
-        <div className="container-custom text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-shadow-lg">
+        <div className="container-app text-center">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
             {language === 'hi' ? 'आज ही शुरू करें' : 'Get Started Today'}
           </h2>
           <p className="text-xl md:text-2xl mb-10 opacity-95 max-w-2xl mx-auto">
@@ -225,10 +212,10 @@ export default function LandingPage() {
         <div className="container-custom">
           <div className="text-center">
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-500 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">य</span>
+              <div className="w-12 h-12 bg-white/20 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-xl" aria-hidden="true">य</span>
               </div>
-              <span className="text-2xl font-extrabold gradient-text">
+              <span className="text-2xl font-extrabold text-white">
                 {t('appName', language)}
               </span>
             </div>
