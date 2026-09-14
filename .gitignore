@@ -1,3 +1,13 @@
+# Build artifacts
+.next
+out
+
+# Next.js
+next-env.d.ts
+
+# Auto-generated
+skills-lock.json
+
 # Logs
 logs
 *.log
